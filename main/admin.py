@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Category, Dish
-
+from .models import Category, Dish, Event, Staff
 
 admin.site.register(Dish)
+admin.site.register(Event)
+admin.site.register(Staff)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

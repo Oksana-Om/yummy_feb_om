@@ -49,7 +49,10 @@ class Event(models.Model):
     sort = models.IntegerField(default=0)
 
     class Meta:
-        db_table = 'events'
+        db_table = 'main_events'
+
+    def __str__(self):
+        return self.name
 
 class Staff(models.Model):
     first_name = models.CharField(max_length=20)
@@ -60,6 +63,9 @@ class Staff(models.Model):
 
     is_visible = models.BooleanField(default=True)
     sort = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.last_name
 
 class Gallery(models.Model):
     photo = models.ImageField(upload_to='gallery/')

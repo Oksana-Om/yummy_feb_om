@@ -1,26 +1,21 @@
 from django.shortcuts import render
 from unicodedata import category
 
-from .models import Category, Dish
+from .models import Category, Dish, Event, Staff
 #from .models import Dish
 
 # Create your views here.
 def index(request):
     ...
-    #categories = Category.objects.all()
-    #categories = Category.objects.filter(is_visible=True)
     categories = Category.objects.get(pk=1)
-    #categories = Category.objects.filter()
-    #categories = Category.objects.last()
-    categories = Category.objects.get(pk=1)
-   # dishes_by_category = Dish.objects.filter(category=categories, is_visible=True)
-    #for dish in categories.dishes.all():
-    #for dish in categories:
-     #   print(dish)
-    #print()
-   # pass
+    #events = Event.objects.get(pk=1)
+
+    events = Event.objects.filter(is_visible=True)
+    chef_member = Staff.objects.filter(is_visible=True)
     categories = Category.objects.filter(is_visible=True)
     context = {
-        'categories': categories
+        'categories': categories,
+        'events': events,
+        'chef_member': chef_member,
     }
     return render(request, 'index.html', context=context)
