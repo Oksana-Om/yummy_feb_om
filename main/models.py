@@ -2,7 +2,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
-
+    slug = models.SlugField(blank=True)
     is_visible = models.BooleanField(default=True)
     sort = models.IntegerField(default=0)
 

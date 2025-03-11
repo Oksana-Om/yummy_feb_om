@@ -21,6 +21,6 @@ def index(request):
    # pass
     categories = Category.objects.filter(is_visible=True)
     context = {
-        'categories': categories,
+        'categories': categories
     }
-    return render(request, 'index.html')
+    return render(request, 'index.html', context=context)

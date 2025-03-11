@@ -1,0 +1,11 @@
+
+<ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+    {% for category in categories %}
+        <li class="nav-item">
+            <a class="nav-link {% if forloop.first %} active show {% endif %}" data-bs-toggle="tab" data-bs-target="#menu-{{ category.slug }}">
+                <h4>{{ category }}</h4>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
