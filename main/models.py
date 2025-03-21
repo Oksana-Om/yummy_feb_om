@@ -1,4 +1,9 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from django.core.validators import RegexValidator
+
+
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -80,6 +85,32 @@ class Contact(models.Model):
     desc = models.TextField(max_length=500)
 
     class Meta:
-        db_table = 'contacts'
+        db_table = 'contact'
+
+class Contacts(models.Model):
+    address = RichTextField()
+    reservations = RichTextField()
+    opening_hours = RichTextField()
+
+class Reservations(models.Model):
+    phone_regex = RegexValidator(regex=r'^\+?(38)?\d{10}$',)
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=50, validators=[phone_regex])
+    date = models.DateField()
+    time = models.TimeField()
+    number_guests = models.PositiveIntegerField(default=1)
+    message = models.TextField(max_length=255)
+
+    is_confirmed = models.BooleanField(default=False)
+    date_created = models.DateField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'main_reservations'
+        ordering = ('-date_created',)
+
+
+
 
 

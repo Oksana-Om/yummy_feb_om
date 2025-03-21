@@ -10,9 +10,11 @@
     <!-- ======= Chefs Section ======= -->
     {% include 'chefs.html' %}
 
-    <!-- ======= Book A Table Section ======= -->
-    {% include 'reservation.html' %}
+    {% if user.is_authenticated %}
+        <!-- ======= Book A Table Section ======= -->
+        {% include 'reservation.html' %}
 
+    {% endif %}
     <!-- ======= Gallery Section ======= -->
      {% include 'gallery.html' %}
 

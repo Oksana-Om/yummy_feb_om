@@ -19,10 +19,20 @@ from django.urls import path
 from main import views  as main_views
 from yummy_feb_om import settings
 from django.conf.urls.static import static
+from django.conf.urls.static import static
+from manager import views as manager_views
+from account import views as account_views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_views.index, name='home'),
+    path('manager/', manager_views.index, name='manager'),
+
+    path(settings.LOGIN_URL, account_views.UserLoginView.as_view(), name='login'),
+    path('account/register', account_views.UserRegistrationView.as_view(), name='register'),
+    path('account/logout', account_views.user_logout, name='logout'),
 ]
 
 if settings.DEBUG:

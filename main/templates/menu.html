@@ -1,5 +1,18 @@
 <section id="menu" class="menu">
     <div class="container" data-aos="fade-up">
+        <div>
+            {% if messages %}
+                <ul class ="message">
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        </div>
         <div class="section-header">
             <h2></h2>
             <p>Check Our <span>Yummy Menu</span></p>
